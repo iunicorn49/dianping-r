@@ -30,7 +30,19 @@ const fetchLikes = endpoint => ({
   }
 });
 
-const reducer = (state = {}, action) => {
+const initialState = {
+  likes: {
+    isFetching: false,
+    pageCount: 0,
+    ids: []
+  },
+  discounts: {
+    isFetching: false,
+    ids: []
+  }
+}
+
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case types.FETCH_LIKES_REQUEST:
     case types.FETCH_LIKES_SUCCESS:
