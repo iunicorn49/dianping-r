@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./style.css";
 import ErrorToast from "../../components/ErrorToast";
+import Home from '../Home'
 
 import { actions as appActions, getError } from "../../redux/modules/app";
 import { bindActionCreators } from "redux";
@@ -14,6 +14,7 @@ class App extends Component {
     } = this.props;
     return (
       <div className="App">
+        <Home />
         {error ? <ErrorToast msg={error} clearError={clearError} /> : null}
       </div>
     );

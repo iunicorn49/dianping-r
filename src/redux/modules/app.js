@@ -25,6 +25,6 @@ const reducer = (state = initialState, action) => {
 export default reducer;
 
 // selectors
-export const getError = (state) => {
-  return state.app.error
-}
+export const getError = state => {
+  return state.app.error;
+};
