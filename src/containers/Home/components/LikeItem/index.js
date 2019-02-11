@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import "./style.css"
+import "./style.css";
+import { Link } from "react-router-dom";
 
 class LikeItem extends Component {
   render() {
@@ -10,13 +11,14 @@ class LikeItem extends Component {
       product,
       currentPrice,
       oldPrice,
-      saleDesc
+      saleDesc,
+      id
     } = this.props.data;
     return (
-      <a className="likeItem">
+      <Link to={`/detail/${id}`} className="likeItem">
         <div className="likeItem__picContainer">
           <div className="likeItem__picTag">{tag}</div>
-          <img className="likeItem__pic" src={picture} />
+          <img alt="" className="likeItem__pic" src={picture} />
         </div>
         <div className="likeItem__content">
           <div className="likeItem__shop">{shop}</div>
@@ -29,7 +31,7 @@ class LikeItem extends Component {
             <div className="likeItem__sale">{saleDesc}</div>
           </div>
         </div>
-      </a>
+      </Link>
     );
   }
 }
