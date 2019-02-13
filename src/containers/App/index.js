@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import ErrorToast from "../../components/ErrorToast";
-import Home from '../Home'
+import Home from "../Home";
+import ProductDetail from "../ProductDetail";
 
 import { actions as appActions, getError } from "../../redux/modules/app";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
       <div className="App">
         <Router>
           <Switch>
+            <Route path="/detail/:id" component={ProductDetail} />
             <Route path="/" component={Home} />
           </Switch>
         </Router>
