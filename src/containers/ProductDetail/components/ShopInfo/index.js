@@ -3,31 +3,36 @@ import "./style.css";
 
 class ShopInfo extends Component {
   render() {
+    const { shop: name, star, address, phone } = this.props.data;
+    const { total } = this.props;
     return (
       <div className="shopInfo">
         <div className="shopInfo__header">
-          使用商户 (4)
+          使用商户 ({total})
           <span className="shopInfo__arrow" />
         </div>
         <div className="shopInfo__middle">
           <div className="shopInfo__middleLeft">
-            <div className="shopInfo__shopName">商品名称</div>
+            <div className="shopInfo__shopName">{name}</div>
             <div>
-							<div className="shopInfo__starsWrapper">
-								<span className="shopInfo__stars">
-									<i style={{width: '80%'}} className="shopInfo__stars--red"></i>
-								</span>
-							</div>
+              <div className="shopInfo__starsWrapper">
+                <span className="shopInfo__stars">
+                  <i
+                    style={{ width: 2 * star + "%" }}
+                    className="shopInfo__stars--red"
+                  />
+                </span>
+              </div>
               <span className="shopInfo__distance">> 100km</span>
             </div>
           </div>
-          <div className="shopInfo__middleRight">
+          <a href={`tel://${phone}`} className="shopInfo__middleRight">
             <i className="shopInfo__phoneIcon" />
-          </div>
+          </a>
         </div>
         <div className="shopInfo__bottom">
           <i className="shopInfo__locationIcon" />
-					啦啦啦德玛一下的地址
+          {address}
         </div>
       </div>
     );

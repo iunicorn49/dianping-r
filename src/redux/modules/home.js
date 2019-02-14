@@ -123,7 +123,6 @@ const discounts = (state = initialState.discounts, action) => {
     default:
       return state;
   }
-  return state;
 };
 
 const reducer = combineReducers({

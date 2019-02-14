@@ -7,7 +7,7 @@ export default store => next => action => {
   const callAPI = action[FETCH_DATA];
   if (typeof callAPI === "undefined") {
     // 说明这个action不是一个请求action, 直接交由后面的中间件处理
-    return next();
+    return next(action);
   }
   /** 逐步校验我们自己定义的数据 */
   const { endpoint, schema, types } = callAPI;
