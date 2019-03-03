@@ -104,7 +104,6 @@ const likes = (state = initialState.likes, action) => {
     default:
       return state;
   }
-  return state;
 };
 
 // 超值特惠

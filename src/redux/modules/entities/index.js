@@ -3,12 +3,14 @@ import products from "./products";
 import shops from "./shops";
 import comments from "./comments";
 import orders from "./orders";
+import keywords from "./keywords";
 
 const rootReducer = combineReducers({
   products,
   shops,
   comments,
-  orders
+  orders,
+  keywords
 });
 
-export default rootReducer
+export default rootReducer;
