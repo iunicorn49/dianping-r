@@ -4,9 +4,6 @@ import "./style.css";
 class Remark extends Component {
   render() {
     const { purchaseNotes, validityPeriod } = this.props.data;
-    const dls = [{ title: "有效期", content: validityPeriod }].concat(
-      purchaseNotes
-    );
     return (
       <div className="remark">
         <div className="remark__header">
@@ -14,12 +11,18 @@ class Remark extends Component {
           <i className="remark__icon" />
         </div>
         <div className="remark__list">
-          {dls.map((dl, dlIndex) => (
-            <dl key={dlIndex} className="remark__item">
-              <dt className="remark__itemTitle">{dl.title}</dt>
-              <dd className="remark__itemDesc">{dl.content}</dd>
-            </dl>
-          ))}
+          <dl className="remark__item">
+            <dt className="remark__itemTitle">有效期</dt>
+            <dd className="remark__itemDesc">{validityPeriod}</dd>
+          </dl>
+          {purchaseNotes.map((item, index) => {
+            return (
+              <dl key={index} className="remark__item">
+                <dt className="remark__itemTitle">{item.title}</dt>
+                <dd className="remark__itemDesc">{item.content}</dd>
+              </dl>
+            );
+          })}
         </div>
       </div>
     );

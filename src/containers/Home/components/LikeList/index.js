@@ -1,14 +1,15 @@
 import React, { Component } from "react";
-import "./style.css";
 import LikeItem from "../LikeItem";
 import Loading from "../../../../components/Loading";
+import "./style.css";
 
 class LikeList extends Component {
   constructor(props) {
     super(props);
-    this.myRef = React.createRef(); // 获取真实dom
+    this.myRef = React.createRef();
     this.removeListener = false;
   }
+
   render() {
     const { data, pageCount } = this.props;
     return (
@@ -29,15 +30,13 @@ class LikeList extends Component {
   }
 
   componentDidMount() {
-    if (this.props.pageCount === 0) {
-      // 只加载一次
-      this.props.fetchData();
-    }
-    if (this.props.pageCount < 3) {
-      // 最多加载三次, 如果已经加载完成, 就不需要再挂载事件了
+    if(this.props.pageCount < 3 ) {
       document.addEventListener("scroll", this.handleScroll);
-    } else {
+    }else {
       this.removeListener = true;
+    }
+    if(this.props.pageCount === 0) {
+      this.props.fetchData();
     }
   }
 
@@ -54,12 +53,13 @@ class LikeList extends Component {
     }
   }
 
+  // 处理屏幕滚动事件，实现加载更多的效果
   handleScroll = () => {
     const scrollTop =
-      document.documentElement.scrollTop || document.body.scrollTop; // 获取滚动的距离
-    const screenHeight = document.documentElement.clientHeight; // 可视区域高度
-    const likeListTop = this.myRef.current.offsetTop; // 组件距离页面顶部的距离
-    const likeListHeight = this.myRef.current.offsetHeight; // 组件的高度
+      document.documentElement.scrollTop || document.body.scrollTop;
+    const screenHeight = document.documentElement.clientHeight;
+    const likeListTop = this.myRef.current.offsetTop;
+    const likeListHeight = this.myRef.current.offsetHeight;
     if (scrollTop >= likeListHeight + likeListTop - screenHeight) {
       this.props.fetchData();
     }

@@ -1,16 +1,19 @@
 import { combineReducers } from "redux";
 import entities from "./entities";
-import app from "./app";
-import detail from "./detail";
 import home from "./home";
+import detail from "./detail";
+import app from "./app";
 import search from "./search";
+import login from "./login"
 
+//合并成根reducer
 const rootReducer = combineReducers({
   entities,
-  app,
-  detail,
   home,
-  search
-});
+  detail,
+  app,
+  search,
+  login
+})
 
-export default rootReducer;
+export default rootReducer

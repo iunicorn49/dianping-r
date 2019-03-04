@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./style.css";
 import { Link } from "react-router-dom";
+import "./style.css";
 
 class Discount extends Component {
   render() {
@@ -15,7 +15,11 @@ class Discount extends Component {
         <div className="discount__content">
           {data.map((item, index) => {
             return (
-              <Link to={`/detail/${item.id}`} key={item.id} className="discount__item">
+              <Link
+                key={item.id}
+                to={`/detail/${item.id}`}
+                className="discount__item"
+              >
                 <div className="discount__itemPic">
                   <img alt="" width="100%" height="100%" src={item.picture} />
                 </div>

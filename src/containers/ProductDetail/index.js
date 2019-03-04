@@ -1,17 +1,18 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 import ProductOverview from "./components/ProductOverview";
 import ShopInfo from "./components/ShopInfo";
 import Detail from "./components/Detail";
 import Remark from "./components/Remark";
 import BuyButton from "./components/BuyButton";
 import Header from "../../components/Header";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
 import {
   actions as detailActions,
   getProduct,
   getRelatedShop
 } from "../../redux/modules/detail";
+
 
 class ProductDetail extends Component {
   render() {
@@ -24,15 +25,16 @@ class ProductDetail extends Component {
           <ShopInfo data={relatedShop} total={product.shopIds.length} />
         )}
         {product && (
-          <Fragment>
+          <div>
             <Detail data={product} />
             <Remark data={product} />
             <BuyButton productId={product.id} />
-          </Fragment>
+          </div>
         )}
       </div>
     );
   }
+
   componentDidMount() {
     const { product } = this.props;
     if (!product) {
@@ -44,7 +46,7 @@ class ProductDetail extends Component {
   }
 
   componentDidUpdate(preProps) {
-    // 第一次获取到产品详情, 需要继续获取关联的店铺信息
+    // 第一次获取到产品详情时，需要继续获取关联的店铺信息
     if (!preProps.product && this.props.product) {
       this.props.detailActions.loadShopById(this.props.product.nearestShop);
     }

@@ -1,22 +1,26 @@
 import React, { Component } from 'react';
-import "./style.css"
+import "./style.css";
 
 class ErrorToast extends Component {
   render() {
     const { msg } = this.props
     return (
       <div className="errorToast">
-        <div className="errorToast__text">{msg}</div>
+        <div className="errorToast__text">
+          {msg}
+        </div>
       </div>
     );
   }
-  componentDidMount() { // 组件挂载时
+
+  componentDidMount() {
     this.timer = setTimeout(() => {
       this.props.clearError();
-    }, 3000)
+    }, 3000);
   }
-  componentWillUnmount() { // 组件卸载时
-    if (this.timer) {
+
+  componentWillUnmount() {
+    if(this.timer) {
       clearTimeout(this.timer)
     }
   }
